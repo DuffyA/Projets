@@ -15,15 +15,15 @@
 
 @font-face {
     font-family: Pattaya;
-    src: url('Fonts/Pattaya-regular.ttf') format('truetype');
+    src: url('../Fonts/Pattaya-regular.ttf') format('truetype');
 }
 @font-face {
     font-family: Poiret One;
-    src: url('Fonts/PoiretOne-Regular.ttf') format('truetype');
+    src: url('../Fonts/PoiretOne-Regular.ttf') format('truetype');
 }
 @font-face {
     font-family: Roboto;
-    src: url('Fonts/RobotoFlex-VariableFont_GRAD\,XOPQ\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format('truetype');
+    src: url('../Fonts/RobotoFlex-VariableFont_GRAD\,XOPQ\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format('truetype');
 }
 
 *,
