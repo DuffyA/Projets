@@ -1,0 +1,64 @@
+/* ######################################################################################### */
+/* Formulaire inscription */
+/* ######################################################################################### */
+
+.title-form {
+    font-family: Pattaya;
+    font-size: clamp(1rem, 3vw, 2.5rem);
+    color: var(--dark);
+    text-align: center;
+}
+
+.creation-compte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.form-creation-compte {
+    margin-bottom: 200px;
+    margin-top: 250px;
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 70px 30px;
+    border: 2px solid var(--green_4);
+    border-radius: 50px;
+    box-shadow: var(--dark) .95px 1.95px 2.6px;
+    gap: 2em;
+}
+
+#register_user_type_form,
+#register_user_type_form div {
+    gap: 1rem;
+}
+
+.form-creation-compte div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-creation-compte label {
+    font-family: Poiret One;
+    font-size: clamp(0.75rem, 1vw, 2.5rem);
+    color: var(--green_3);
+    font-weight: bolder;
+}
+.form-creation-compte input{
+    background-color: #ECE6F0;
+    height: 2em;
+    border: none;
+    padding: 5px;
+    border-radius: 15px;
+    font-family: Roboto;
+    text-align: center;
+}
+
+.exigences p{
+    font-family: roboto;
+    font-size: small;
+    color: var(--dark);
+}

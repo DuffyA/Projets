@@ -1,0 +1,30 @@
+<div class="compte-header">
+    <h2 class="">Espace Membre</h2>
+    <p>
+        Bonjour
+        <span class="compte-header-user-pseudo">{{ app.user.userPseudo }}</span>
+    </p>
+</div>
+<ul>
+    <li class="list-compte-menu-item">
+        <a class="nav-link" href="#">Mon profil</a>
+    </li>
+    <li class="list-compte-menu-item">
+        <a class="nav-link" href="{{ path('app_account') }}">Mes trajets</a>
+    </li>
+<!--<li class="list-compte-menu-item">
+        <a class="nav-link" href="{{ path('app_account') }}">Véhicules</a>
+    </li>
+    <li class="list-compte-menu-item">
+        <a class="nav-link" href="{{ path('app_account') }}">Créer un trajet</a>
+    </li>
+-->
+    <li class="list-compte-menu-item">
+        <a class="nav-link" href="{{ path('app_account_modify_pwd') }}">Modifier mon mot de passe</a>
+    </li>
+    <li class="list-compte-menu-item">
+        <a class="nav-link" href="{{ path('app_logout') }}">
+            <img src="{{ asset('/media/Icones_svg/Logout.svg') }}" alt="Logout account">
+        </a>
+    </li>
+</ul>

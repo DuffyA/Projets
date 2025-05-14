@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block css_page %}<link rel="stylesheet" href="{{ asset('/styles/compte.css') }}">{% endblock %}
+
+{% block header_background %}url('{{  asset('media/Images_compte/image Header compte.jpg') }}'){% endblock %}
+{% block header_text %}Chaque geste compte,<br/> remercions la nature{% endblock %}
+
+{% block body %}
+
+    <main class="section-compte padding">
+
+        <div class="list-compte-menu">
+            {% include 'account/_menu.html.twig' %}
+        </div>
+        <div>
+            ....
+        </div>
+
+    </main>
+
+{% endblock %}

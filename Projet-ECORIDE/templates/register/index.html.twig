@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block css_page %}<link rel="stylesheet" href="{{ asset('/styles/creation-compte.css') }}">{% endblock %}
+
+{% block header_background %}url('{{  asset('media/Images_creation-compte/image Header creation-compte.jpg') }}'){% endblock %}
+{% block header_text %}Rejoignez-nous<br/>pour plus de trajets responsables{% endblock %}
+
+{% block body %}
+    <main class="creation-compte section">
+        {{ form_start(registerForm, {
+            'attr' : {
+                'class' : 'form-creation-compte'
+            }
+        }) }}
+        <h1 class="title-form">Création de compte</h1>
+        {{ form_widget(registerForm) }}
+        <div class="exigences">
+            <p class="exigences-crt">Le mot de passe doit contenir 8 caractères minimum ❌</p>
+            <p class="exigences-maj">1 majuscule ❌</p>
+            <p class="exigences-spc">1 caractère spécial ❌</p>
+            <p class="exigences-chf">et 1 chiffre ❌</p>
+        </div>
+        {{ form_end(registerForm) }}
+    </main>
+{% endblock %}
+

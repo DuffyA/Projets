@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block css_page %}<link rel="stylesheet" href="{{ asset('/styles/accueil.css') }}">{% endblock %}
+
+{% block header_background %}url('{{  asset('media/Images_accueil/image Header A.jpg') }}'){% endblock %}
+{% block header_text %}Eco Ride<br/>Voyagez responsable, vivez durable{% endblock %}
+
+
+{% block body %}
+    <main>
+        <form class="form-recherche" action="Trajets.php" method="GET">
+            <div>
+                <img class="form-recherche-icones" src="{{ asset('/media/Icones_svg/Voiture recherche.svg') }}" alt="Voiture départ">
+                <input type="text" name="depart" id="depart-input" list="depart-suggestions" placeholder="Départ" class="form-recherche-depart" value="">
+                <datalist id="depart-suggestions"><option value="Paris"></option><option value="Marseille"></option><option value="Lyon"></option><option value="Toulouse"></option><option value="Nice"></option><option value="Nantes"></option><option value="Montpellier"></option><option value="Strasbourg"></option><option value="Bordeaux"></option><option value="Lille"></option><option value="Rennes"></option><option value="Reims"></option><option value="Le Havre"></option><option value="Saint-Étienne"></option><option value="Toulon"></option><option value="Angers"></option><option value="Grenoble"></option><option value="Dijon"></option><option value="Nîmes"></option><option value="Aix-en-Provence"></option><option value="La Rochelle"></option><option value="Clermont-Ferrand"></option><option value="Le Mans"></option><option value="Amiens"></option><option value="Tours"></option><option value="Perpignan"></option><option value="Metz"></option><option value="Caen"></option><option value="Boulogne-Billancourt"></option><option value="Nancy"></option><option value="Saint-Denis"></option><option value="Pau"></option><option value="Neuilly-sur-Seine"></option><option value="La Seyne-sur-Mer"></option></datalist>
+
+                <img class="form-recherche-icones" src="{{ asset('/media/Icones_svg/Voiture recherche.svg') }}" alt="Voiture destination">
+                <input type="text" name="destination" id="destination-input" list="destination-suggestions" placeholder="Destination" class="form-recherche-destination" value="">
+                <datalist id="arrive-suggestions"><option value="Paris"></option><option value="Marseille"></option><option value="Lyon"></option><option value="Toulouse"></option><option value="Nice"></option><option value="Nantes"></option><option value="Montpellier"></option><option value="Strasbourg"></option><option value="Bordeaux"></option><option value="Lille"></option><option value="Rennes"></option><option value="Reims"></option><option value="Le Havre"></option><option value="Saint-Étienne"></option><option value="Toulon"></option><option value="Angers"></option><option value="Grenoble"></option><option value="Dijon"></option><option value="Nîmes"></option><option value="Aix-en-Provence"></option><option value="La Rochelle"></option><option value="Clermont-Ferrand"></option><option value="Le Mans"></option><option value="Amiens"></option><option value="Tours"></option><option value="Perpignan"></option><option value="Metz"></option><option value="Caen"></option><option value="Boulogne-Billancourt"></option><option value="Nancy"></option><option value="Saint-Denis"></option><option value="Pau"></option><option value="Neuilly-sur-Seine"></option><option value="La Seyne-sur-Mer"></option></datalist>
+
+                <input type="date" name="date" placeholder="Date" class="form-recherche-date" value="">
+
+                <img class="form-recherche-icones" src="{{ asset('/media/Icones_svg/Passager.svg') }}" alt="Passager">
+                <input type="number" name="passagers" id="nombre-passagers-input" min="1" placeholder="Nombre de passagers" class="form-recherche-nombre-passagers" value="">
+            </div>
+
+            <input type="hidden" name="eco" value="">
+            <input type="hidden" name="prix" value="">
+            <input type="hidden" name="duree" value="">
+            <input type="hidden" name="note" value="1">
+            <input type="submit" value="Rechercher" class="button form-recherche-rechercher">
+        </form>
+
+        <div>
+            <section class="section-objectif padding">
+                <div class="section-text">
+                    <h2>Qui sommes nous?</h2>
+                    <p>La startup "Eco Ride" créée en France en 2025, a pour objectif de réduire l'impact environnemental des déplacements en encourageant le covoiturage. L’ambition "EcoRide" est de devenir la principale plateforme de covoiturage pour les voyageurs soucieux de l'environnement et ceux qui recherchent une solution économique  pour leurs déplacements. Il est important à souligner que la plateforme gère uniquement les déplacements en voitures. </p>
+                    <img src="{{ asset('/media/Images_accueil/Image accueil.png') }}" alt="Image du covoiturage">
+                </div>
+
+            </section>
+            <section class="section-avis padding">
+                <div class="section-text">
+                    <h2 >Tous nos conducteurs sont vérifiés</h2>
+                    <img src="{{ asset('/media/Images_accueil/Image avis.png') }}" alt="Image avis">
+                    <p>Chez Ecoride, la sécurité et la confiance sont primordiales. C’est pourquoi tous nos conducteurs sont soigneusement vérifiés avant de rejoindre notre plateforme. Vous pouvez voyager en toute sérénité, sachant que chaque conducteur répond à nos standards rigoureux de qualité et de sécurité.</p>
+                    <a href="Trajets.php"><button class="button">Covoiturages</button></a>
+                </div>
+            </section>
+            <section class="contactez-nous">
+                <h2>Contactez-nous</h2>
+                <p>Pour toute question ou demande d'information, n'hésitez pas à nous contacter. Nous sommes là pour vous aider et nous nous engageons à répondre à vos besoins dans les plus brefs délais.</p>
+                <a href="Contact.php"><button class="button">Nous Contacter</button></a>
+            </section>
+        </div>
+    </main>
+{% endblock %}
