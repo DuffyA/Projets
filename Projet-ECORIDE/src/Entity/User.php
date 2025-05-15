@@ -54,7 +54,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $user_pseudo = null;
 
-    public function getId(): ?int
+    public function getUserId(): ?int
     {
         return $this->user_id;
     }
