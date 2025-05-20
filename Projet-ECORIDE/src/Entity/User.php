@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -48,11 +50,43 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $user_birthdate = null;
 
-    #[ORM\Column(type: Types::BLOB, nullable: true)]
-    private $user_photo = null;
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $user_photo = null;
 
     #[ORM\Column(length: 50)]
     private ?string $user_pseudo = null;
+
+    /**
+     * @var Collection<int, Car>
+     */
+    #[ORM\OneToMany(targetEntity: Car::class, mappedBy: 'car_user')]
+    private Collection $user_cars;
+
+    /**
+     * @var Collection<int, Review>
+     */
+    #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'review_writer')]
+    private Collection $user_Wreviews;
+
+    /**
+     * @var Collection<int, Review>
+     */
+    #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'review_target')]
+    private Collection $User_reviews;
+
+    /**
+     * @var Collection<int, Journey>
+     */
+    #[ORM\OneToMany(targetEntity: Journey::class, mappedBy: 'journey_driver')]
+    private Collection $user_Djourneys;
+
+    public function __construct()
+    {
+        $this->user_cars = new ArrayCollection();
+        $this->user_Wreviews = new ArrayCollection();
+        $this->User_reviews = new ArrayCollection();
+        $this->user_Djourneys = new ArrayCollection();
+    }
 
     public function getUserId(): ?int
     {
@@ -187,12 +221,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getUserPhoto(): null
+    public function getUserPhoto(): string
     {
         return $this->user_photo;
     }
 
-    public function setUserPhoto($user_photo): static
+    public function setUserPhoto(string $user_photo): static
     {
         $this->user_photo = $user_photo;
 
@@ -207,6 +241,126 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUserPseudo(string $user_pseudo): static
     {
         $this->user_pseudo = $user_pseudo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Car>
+     */
+    public function getUserCars(): Collection
+    {
+        return $this->user_cars;
+    }
+
+    public function addUserCar(Car $userCar): static
+    {
+        if (!$this->user_cars->contains($userCar)) {
+            $this->user_cars->add($userCar);
+            $userCar->setCarUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserCar(Car $userCar): static
+    {
+        if ($this->user_cars->removeElement($userCar)) {
+            // set the owning side to null (unless already changed)
+            if ($userCar->getCarUser() === $this) {
+                $userCar->setCarUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Review>
+     */
+    public function getUserWreviews(): Collection
+    {
+        return $this->user_Wreviews;
+    }
+
+    public function addUserWreview(Review $userWreview): static
+    {
+        if (!$this->user_Wreviews->contains($userWreview)) {
+            $this->user_Wreviews->add($userWreview);
+            $userWreview->setReviewWriter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserWreview(Review $userWreview): static
+    {
+        if ($this->user_Wreviews->removeElement($userWreview)) {
+            // set the owning side to null (unless already changed)
+            if ($userWreview->getReviewWriter() === $this) {
+                $userWreview->setReviewWriter(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Review>
+     */
+    public function getUserReviews(): Collection
+    {
+        return $this->User_reviews;
+    }
+
+    public function addUserReview(Review $userReview): static
+    {
+        if (!$this->User_reviews->contains($userReview)) {
+            $this->User_reviews->add($userReview);
+            $userReview->setReviewTarget($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserReview(Review $userReview): static
+    {
+        if ($this->User_reviews->removeElement($userReview)) {
+            // set the owning side to null (unless already changed)
+            if ($userReview->getReviewTarget() === $this) {
+                $userReview->setReviewTarget(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Journey>
+     */
+    public function getUserDjourneys(): Collection
+    {
+        return $this->user_Djourneys;
+    }
+
+    public function addUserDjourney(Journey $userDjourney): static
+    {
+        if (!$this->user_Djourneys->contains($userDjourney)) {
+            $this->user_Djourneys->add($userDjourney);
+            $userDjourney->setJourneyDriver($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserDjourney(Journey $userDjourney): static
+    {
+        if ($this->user_Djourneys->removeElement($userDjourney)) {
+            // set the owning side to null (unless already changed)
+            if ($userDjourney->getJourneyDriver() === $this) {
+                $userDjourney->setJourneyDriver(null);
+            }
+        }
 
         return $this;
     }

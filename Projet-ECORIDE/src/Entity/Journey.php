@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\JourneyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -40,6 +42,25 @@ class Journey
 
     #[ORM\Column]
     private ?float $journey_price = null;
+
+    #[ORM\ManyToOne(inversedBy: 'car_journeys')]
+    #[ORM\JoinColumn(name: 'journey_car', referencedColumnName: 'car_id', nullable: false)]
+    private ?Car $journey_car = null;
+
+    /**
+     * @var Collection<int, Review>
+     */
+    #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'review_journey')]
+    private Collection $journey_reviews;
+
+    #[ORM\ManyToOne(inversedBy: 'user_Djourneys')]
+    #[ORM\JoinColumn(name: 'journey_driver', referencedColumnName: 'user_id', nullable: false)]
+    private ?User $journey_driver = null;
+
+    public function __construct()
+    {
+        $this->journey_reviews = new ArrayCollection();
+    }
 
     public function getJourneyId(): ?int
     {
@@ -150,6 +171,60 @@ class Journey
     public function setJourneyPrice(float $journey_price): static
     {
         $this->journey_price = $journey_price;
+
+        return $this;
+    }
+
+    public function getJourneyCar(): ?Car
+    {
+        return $this->journey_car;
+    }
+
+    public function setJourneyCar(?Car $journey_car): static
+    {
+        $this->journey_car = $journey_car;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Review>
+     */
+    public function getJourneyReviews(): Collection
+    {
+        return $this->journey_reviews;
+    }
+
+    public function addJourneyReview(Review $journeyReview): static
+    {
+        if (!$this->journey_reviews->contains($journeyReview)) {
+            $this->journey_reviews->add($journeyReview);
+            $journeyReview->setReviewJourney($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJourneyReview(Review $journeyReview): static
+    {
+        if ($this->journey_reviews->removeElement($journeyReview)) {
+            // set the owning side to null (unless already changed)
+            if ($journeyReview->getReviewJourney() === $this) {
+                $journeyReview->setReviewJourney(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getJourneyDriver(): ?User
+    {
+        return $this->journey_driver;
+    }
+
+    public function setJourneyDriver(?User $journey_driver): static
+    {
+        $this->journey_driver = $journey_driver;
 
         return $this;
     }
