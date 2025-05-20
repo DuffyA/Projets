@@ -36,7 +36,7 @@
 }
 
 /* ######################################################################################### */
-/* section modifier password */
+/* section compte */
 /* ######################################################################################### */
 
 .section-compte {
@@ -70,14 +70,18 @@
     color: var(--dark);
 }
 
-.form-modifier-password-title {
+/* ######################################################################################### */
+/* section modifier password / modifier profil */
+/* ######################################################################################### */
+
+.form-modifier-title {
     font-family: Pattaya;
     font-size: clamp(1rem, 3vw, 2.5rem);
     color: var(--dark);
     text-align: center;
 }
 
-.form-modifier-password {
+.form-modifier {
     background-color: var(--light);
     display: flex;
     flex-direction: column;
@@ -89,21 +93,21 @@
     gap: 2em;
 }
 
-.form-modifier-password div {
+.form-modifier div {
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.form-modifier-password label {
+.form-modifier label {
     font-family: Poiret One;
     font-size: clamp(0.75rem, 1vw, 2.5rem);
     color: var(--green_3);
     font-weight: bolder;
 }
 
-.form-modifier-password input {
+.form-modifier input {
     background-color: #ECE6F0;
     font-size: clamp(0.75rem, 1vw, 2.5rem);
     border: none;
@@ -114,5 +118,62 @@
 }
 
 /* ######################################################################################### */
-/* section passager */
+/* section profil */
 /* ######################################################################################### */
+
+.data-section {
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 60px;
+    border-radius: 5px;
+    gap: 1rem;
+}
+
+.data-section h2 {
+    font-family: Pattaya;
+    font-size: clamp(1rem, 3vw, 2.5rem);
+    color: var(--dark);
+    border-bottom: 2px solid var(--green_3);
+
+}
+
+.data-section img {
+    max-width: 130px;
+    max-height: 130px;
+    border: 1px solid var(--green_4);
+    border-radius: 50px;
+}
+
+.data-section div {
+    font-family: Roboto;
+    gap: 0.5em;
+}
+
+.data-section span {
+    background-color: #ECE6F0;
+    border-radius: 5px;
+}
+
+.data-section div p {
+    font-family: "Poiret One";
+    font-size: clamp(0.75rem, 1.25vw, 2.5rem);
+    font-weight: bolder;
+    color: var(--green_3);
+}
+
+.modifier-link{
+    margin-top: 2rem;
+}
+
+.modifier-link li {
+    font-family: Roboto;
+    list-style-type: none;
+    color: var(--green_2);
+    font-weight: bolder;
+}
+
+.modifier-link li :hover {
+    color: var(--dark);
+}

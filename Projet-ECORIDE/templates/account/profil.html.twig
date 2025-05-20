@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block css_page %}<link rel="stylesheet" href="{{ asset('/styles/compte.css') }}">{% endblock %}
+
+{% block header_background %}url('{{  asset('media/Images_compte/image Header compte.jpg') }}'){% endblock %}
+{% block header_text %}Chaque geste compte,<br/> remercions la nature{% endblock %}
+
+{% block body %}
+
+    <main class="section-compte padding">
+
+        <div class="list-compte-menu">
+            {% include 'account/_menu.html.twig' %}
+        </div>
+        <div class="padding">
+            {% if app.user %}
+                <section class="data-section">
+                    <h2>Profil</h2>
+                    <div>
+                        <img src="..\..\uploads\{{ app.user.userPhoto }}" alt="Image profil">
+                    </div>
+                    <div>
+                        <p>Pseudo:</p><span>{{ app.user.userPseudo }}</span>
+                    </div>
+                    <div>
+                        <p>Mail:</p><span>{{ app.user.userEmail }}</span>
+                    </div>
+                    <div>
+                        <p>Prénom:</p><span>{{ app.user.userFirstname }}</span>
+                    </div>
+                    <div>
+                        <p>Nom:</p><span>{{ app.user.userSurname }}</span>
+                    </div>
+                    <div>
+                        <p>Date de naissance:</p><span>{{ app.user.userBirthdate|date('d/m/Y') }}</span>
+                    </div>
+                    <div>
+                        <p>Adresse:</p><span>{{ app.user.useraddress }}</span>
+                    </div>
+                    <div>
+                        <p>Téléphone:</p><span>{{ app.user.userPhone }}</span>
+                    </div>
+                    <div class="modifier-link">
+                        <li>
+                            <a href="{{ path('app_account_profil_form') }}">Mettre à jour mon profil</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_account_modify_pwd') }}">Modifier mon mot de passe</a>
+                        </li>
+                    </div>
+
+                </section>
+            {% endif %}
+        </div>
+    </main>
+
+{% endblock %}

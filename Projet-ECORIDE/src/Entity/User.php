@@ -50,7 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $user_birthdate = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
+    #[ORM\Column(length: 200, nullable: true)]
     private ?string $user_photo = null;
 
     #[ORM\Column(length: 50)]

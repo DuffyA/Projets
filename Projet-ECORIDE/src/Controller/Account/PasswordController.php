@@ -20,7 +20,7 @@ final class PasswordController extends AbstractController
         $this->entityManager = $entityManager;
     }
     #[Route('/Compte/Modifier-mdp', name: 'app_account_modify_pwd')]
-    public function index(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
 
         $user = $this->getUser();
@@ -42,6 +42,6 @@ final class PasswordController extends AbstractController
             'modifyPwd' => $form->createView()
         ]);
     }
+
 }
 
-?>

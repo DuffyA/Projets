@@ -60,8 +60,8 @@ class PasswordUserTypeForm extends AbstractType
                 'mapped' => false,
             ])
             ->add('submit', SubmitType::class,[
-            'label' => 'Mettre à jour le mot de passe',
-            'attr' => [
+                'label' => 'Mettre à jour le mot de passe',
+                'attr' => [
             'class' => 'button'
         ]
     ])
